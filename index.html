@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="apple-mobile-web-app-status-bar-style"  />
+	<title>梦想领导者</title>
+	<script>
+		document.getElementsByTagName("html")[0].style.fontSize=document.documentElement.clientWidth/3+"px";
+		document.documentElement.addEventListener('touchstart', function () { });
+	</script>
+	<link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+	<head>
+		<div class="hd_wrap" style="position:relative;z-index:1;">
+			<div class="hd_ban clearfix">
+				<div class="fl">
+					<div class="btn back mgt10 mgl14"></div>
+				</div>
+				<div class="fr">
+					<div class="btn share mgt10 mgr30"></div>
+				</div>
+				<div class="hd_center" id="hd_center">
+					<span>梦想领导者活动</span>
+				</div>
+			</div>
+		</div>
+	</head>
+	<section id="wrapper">
+		<div class="ind_main">
+			<div class="flash">
+				<div class="clutter_icon"></div>
+				<div class="player num1"></div>
+				<div class="player num2"></div>
+				<div class="player num3"></div>
+				<div class="player num4"></div>
+			</div>
+			<div class="ind_vote">
+				<div class="vote">
+					<a href="javascript:;" class="link link_l">立即报名</a>
+					<a href="javascript:;" class="link link_r">参与投票</a>
+				</div>
+			</div>
+			<div class="explain">
+				<div class="ex_tit_wrap">
+					<div class="ex_tit mgt72 mgb20">活动时间</div>
+					<p class="attendMan">2017年4月1日至2017年10月1日</p>
+				</div>
+				<div class="ex_tit_wrap">
+					<div class="ex_tit mgt72 mgb20">参与人员</div>
+					<p class="attendMan">1. 在职的高校足球教师均可参加</p>
+					<p class="attendMan">2. 热衷于足球教育事业</p>
+					<p class="attendMan">3. 愿意通过足球运动展现自身球技</p>
+					<p class="attendMan">指定参赛城市：北京、天津、西安、郑州、山东、杭州、福州、广州</p>
+				</div>
+				<div class="ex_tit_wrap">
+					<div class="ex_tit mgt72 mgb20">参与规则</div>
+					<div class="attendrule_box">
+						<div class="imgbox">
+							<img class="attendrule_bg" src="images/attend_rule_bg.png" alt="">
+						</div>
+						<div class="msgbox">
+							<p>下载“51乐动”客户端或者直接通过H5活动链接参与活动，填写个人信息，诉述一段自己足球执教生涯中最难忘的经历或对中国青少年足球的期望完成报名后等待组委会审核通过即为报名成</p>
+							<p class="success_msg">功。成功报名后，多为自己拉票将投票页分享赢得更多的支持票，在规定时间内，每个城市评选出一位得票最多的足球教师，将参加主办方组织的的<span>西班牙巴塞罗那梦想之旅活动。</span></p>
+						</div>
+						
+					</div>
+				</div>
+				<div class="ex_tit_wrap">
+					<div class="ex_tit mgt72 mgb20">投票人员</div>
+					<p class="attendMan">所有在51乐动上已注册的用户</p>
+				</div>
+				<div class="ex_tit_wrap">
+					<div class="ex_tit mgt72 mgb20">投票规则</div>
+					<p class="attendpd40">每个51乐动注册用户每天均可为支持的参赛选手投一票,若发现恶意刷票的现象，将直接取消参赛资格。</p>
+				</div>
+				<div class="ex_tit_wrap">
+					<div class="ex_tit mgt72 mgb20">奖励设置</div>
+					<p class="attendpd40">1. 参加主办方组织的的西班牙巴塞罗那梦想之旅活动</p>
+					<p class="attendpd40">2. 参观巴塞罗那俱乐部、博物馆，体验巴萨的足球文化</p>
+					<p class="attendpd40">3. 参加巴萨知名球星见面会</p>
+					<p class="attendpd40">4. 在诺坎普球场观看巴萨的比赛并与球星近距离互动</p>
+				</div>
+			</div>
+			<div class="ft_plane">
+				<div class="plane"></div>
+			</div>
+		</div>
+		
+	</section>
+	<script src="js/zepto.1.4.min.js"></script>
+	<script src="js/touch.js"></script>
+	<script src="js/iscroll.js"></script>
+	<script src="js/zone-common.js"></script>
+	<script>
+		window.onload=function(){
+				setTimeout(function(){
+				loaded ();
+
+			var myScroll;
+
+			function loaded () {
+				myScroll = new IScroll('#wrapper', { scrollX: false, freeScroll: true });
+			}
+
+			document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		},100);
+
+				// $('#test').click(function(){
+				// 	tips('投票成功',40);
+				// })
+
+		}
+		var userId='1474953453452003';
+		var activityId='HD937090002';
+		var readyFlag=false;
+		var applyFlag=null;//报名状态
+		var loginFlag=null;//登录状态
+		$(function(){
+			function loginInit(){
+				var loStTemp , token ,name;
+				var url = window.location.href ;
+
+				//判断当前 是嵌入app  还是微信
+				//http://192.168.0.106/ld-soccer-test/51-ledong-zone/index.html?isApp&userId&sessionToken
+				//规定url中 含有isApp 即是app跳转到h5
+				// app
+				if(url.indexOf('isApp')!=-1){
+					loStTemp = url.split('?')[1].split('&')[1];//id
+					token = url.split('?')[1].split('&')[2];//token
+					name = decodeURI(url.split('?')[1].split('&')[3]);//username
+				}
+				//h5
+				else{
+					loStTemp = getCookie('userId') ;
+					token = getCookie('sessionToken') ;					
+					name = getCookie('userName') ;					
+				}
+				
+				if(loStTemp!=null && loStTemp!=undefined && loStTemp!=''){
+					this.userId=loStTemp;
+					sessionStorage.setItem('userId',this.userId);
+					//顺带 存储 用户名
+					sessionStorage.setItem('userName',name);
+				}
+
+				if(token!=null && token!=undefined && token!=''){
+					this.sessionToken=token;
+					sessionStorage.setItem('sessionToken',this.sessionToken);
+				}
+			}
+
+			function getData(argu){
+				argu=argu||{};
+				argu.url=argu.url||'http://192.168.0.229:8080/ledong-p2c-webapps-wwwp/voteActivity/getUserApplyStatus';
+				$.ajax({
+					url:argu.url,
+					type:'post',
+					dataType:'json',
+					data:{
+						userId:'1474953453452003',
+						activityId:'HD937090002'
+					},
+					success:function(res){
+						// if(res.status=='200')
+						readyFlag=true;
+						console.log(res);
+						applyFlag=res.retContent;
+						//'0','1','2'没报名：2，待审核：0，报名成功：1
+					},
+					error:function(){
+
+					}
+				})
+			}
+
+			//初始化获取数据
+			getData();//------getData是判断是否登录。
+			//事件
+			$('.link_l').tap(function(){//立即报名
+				if(readyFlag){
+					//已获取数据
+					if(applyFlag=='2'){
+						window.location.href='vote_join.html';
+					}
+					else if(applyFlag=='1'){
+						tips('您已报名该活动,赶快去拉票吧！',40);
+					}
+					else if(applyFlag=='0'){
+						tips('您已报名，请耐心等待审核',40);
+					}
+				}
+				else if(loginFlag){
+					// window.location.href='vote_join.html';去登录
+				}
+				else{
+					tips('请重新载入页面',40);
+					// window.location.reload();
+				}
+			});
+
+			$('.link_r').tap(function(){
+				if(loginFlag)
+				{
+					window.location.href='vote_list.html';
+				}
+				else
+				{
+					// window.location.href='vote_list.html';去登录
+					tips('去登陆',40);
+				}
+			});
+		})
+	</script>
+</body>
+</html>
